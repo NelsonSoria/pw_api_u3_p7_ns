@@ -1,65 +1,63 @@
-package uce.edu.web.api.repository.modelo;
+package uce.edu.web.api.service.to;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.SequenceGenerator;
-import jakarta.persistence.Table;
+public class PersonaTo implements Serializable{
 
-@Entity
-@Table (name = "persona")   
-public class Persona {
-
-    @Id
-    @SequenceGenerator (name = "seq_persona", sequenceName = "seq_persona", allocationSize = 1)
-    @GeneratedValue (generator = "seq_persona", strategy = GenerationType.SEQUENCE)
-    @Column (name = "pers_id")
     private Integer id;
-    @Column (name = "pers_nombre")
+
     private String nombre;
-    @Column (name = "pers_apellido")
+
     private String apellido;
-    @Column (name = "pers_fecha_nacimiento")
+
     private LocalDateTime fechaNacimiento;
 
-    Persona() {
+private static final long serialVersionUID = -1544399202104638172L;
+
+    // SET Y GET
+
+    public PersonaTo() {
     }
 
-    public Persona(Integer id, String nombre, String apellido, LocalDateTime fechaNacimiento) {
+    public PersonaTo(Integer id, String nombre, String apellido, LocalDateTime fechaNacimiento) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
         this.fechaNacimiento = fechaNacimiento;
     }
-    //Setters y Getters
+
     public Integer getId() {
         return id;
     }
+
+
     public void setId(Integer id) {
         this.id = id;
     }
+
     public String getNombre() {
         return nombre;
     }
+
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
+
     public String getApellido() {
         return apellido;
     }
+
     public void setApellido(String apellido) {
         this.apellido = apellido;
     }
+
     public LocalDateTime getFechaNacimiento() {
         return fechaNacimiento;
     }
+
     public void setFechaNacimiento(LocalDateTime fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
     }
-   
 
 }

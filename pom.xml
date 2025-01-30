@@ -30,6 +30,16 @@
     </dependencyManagement>
 
     <dependencies>
+        <dependency>
+      <groupId>io.quarkus</groupId>
+      <artifactId>quarkus-jackson</artifactId>
+    </dependency>
+ 
+    <dependency>
+      <groupId>io.quarkus</groupId>
+      <artifactId>quarkus-resteasy-jsonb</artifactId>
+    </dependency>
+ 
       
         <dependency>
             <groupId>io.quarkus</groupId>
