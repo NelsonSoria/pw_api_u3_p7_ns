@@ -1,7 +1,6 @@
 package uce.edu.web.api.repository.modelo;
 
 import java.time.LocalDateTime;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -13,6 +12,7 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "Estudiante")
 public class Estudiante {
+
     @Id
     @SequenceGenerator(name = "seq_estudiante", sequenceName = "seq_estudiante", allocationSize = 1)
     @GeneratedValue(generator = "seq_estudiante", strategy = GenerationType.SEQUENCE)
