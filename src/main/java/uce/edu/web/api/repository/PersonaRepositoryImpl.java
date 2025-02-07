@@ -41,14 +41,14 @@ public class PersonaRepositoryImpl implements IPersonaRepository {
     }
 
     @Override
-    public List<Persona> buscarTodosPorNombre(String nombre) {
+    public List<Persona> buscarPorNombre(String nombre) {
        return this.entityManager.createQuery("SELECT p FROM Persona p WHERE p.nombre = :nombre", Persona.class)
                 .setParameter("nombre", nombre).getResultList();
        
     }
 
     @Override
-    public List<Persona> buscarTodosPorNombreyApellido(String nombre, String apellido) {
+    public List<Persona> buscarPorNombreyApellido(String nombre, String apellido) {
         return this.entityManager.createQuery("SELECT p FROM Persona p WHERE p.nombre = :nombre AND p.apellido = :apellido", Persona.class)
                 .setParameter("nombre", nombre).setParameter("apellido", apellido).getResultList();
     }

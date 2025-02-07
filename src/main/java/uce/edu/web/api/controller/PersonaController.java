@@ -69,14 +69,14 @@ public class PersonaController {
 
     @GET
     @Path("/porNombre")
-    public List<PersonaTo> buscarTodosPorNombre(@QueryParam("nombre") String nombre) {
-        return this.personaService.buscarTodosPorNombre(nombre);
+    public List<PersonaTo> buscarPorNombre(@QueryParam("nombre") String nombre) {
+        return this.personaService.buscarPorNombre(nombre);
     }
 
     @GET
     @Path("/porNombreyApellido")
-    public List<PersonaTo> buscarTodosPorNombreyApellido(@QueryParam("nombre") String nombre,
+    public List<PersonaTo> buscarPorNombreyApellido(@QueryParam("nombre") String nombre,
             @QueryParam("apellido") String apellido) {
-        return this.personaService.buscarTodosPorNombreyApellido(nombre, apellido);
+        return this.personaService.buscarPorNombreyApellido(nombre, apellido);
     }
 }

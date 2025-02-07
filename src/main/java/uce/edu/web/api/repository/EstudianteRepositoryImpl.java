@@ -1,5 +1,7 @@
 package uce.edu.web.api.repository;
 
+import java.util.List;
+
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
@@ -37,4 +39,22 @@ public class EstudianteRepositoryImpl implements IEstudianteRepository {
 
     }
 
+    @Override
+    public List<Estudiante> buscarTodos() {
+        return this.entityManager.createQuery("SELECT p FROM Estudiante p", Estudiante.class).getResultList();
+    }
+
+    @Override
+    public List<Estudiante> buscarPorApellido(String apellido) {
+        return this.entityManager.createQuery("SELECT p FROM Estudiante p WHERE p.apellido = :apellido", Estudiante.class)
+                .setParameter("apellido", apellido).getResultList();
+    }
+
+    @Override
+    public List<Estudiante> buscarPorApellidoyEdad(String apellido, Integer edad) {
+        return this.entityManager.createQuery("SELECT p FROM Estudiante p WHERE p.apellido = :apellido AND p.edad = :edad", Estudiante.class)
+                .setParameter("apellido", apellido).setParameter("edad", edad).getResultList();
+    }
+
+   
 }

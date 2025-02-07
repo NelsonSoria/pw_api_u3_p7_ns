@@ -10,7 +10,7 @@ public interface IPersonaRepository {
     public void actualizar(Persona persona);
     public void eliminar(Integer id);
     public List<Persona> buscarTodos();
-    public List<Persona> buscarTodosPorNombre(String nombre);
-    public List<Persona> buscarTodosPorNombreyApellido(String nombre, String apellido);
+    public List<Persona> buscarPorNombre(String nombre);
+    public List<Persona> buscarPorNombreyApellido(String nombre, String apellido);
 
 }

@@ -65,14 +65,14 @@ public class PersonaServiceImpl implements IPersonaService {
     }
 
     @Override
-    public List<PersonaTo> buscarTodosPorNombre(String nombre) {
-        List<Persona> personas = this.iPersonaRepository.buscarTodosPorNombre(nombre);
+    public List<PersonaTo> buscarPorNombre(String nombre) {
+        List<Persona> personas = this.iPersonaRepository.buscarPorNombre(nombre);
         return personas.stream().map(this.mapTo).toList();
     }
 
     @Override
-    public List<PersonaTo> buscarTodosPorNombreyApellido(String nombre, String apellido) {
-       List<Persona> personas = this.iPersonaRepository.buscarTodosPorNombreyApellido(nombre, apellido);
+    public List<PersonaTo> buscarPorNombreyApellido(String nombre, String apellido) {
+       List<Persona> personas = this.iPersonaRepository.buscarPorNombreyApellido(nombre, apellido);
        List<PersonaTo> personasTo = new ArrayList<>();
        for (Persona persona : personas) {
             personasTo.add(this.mapTo.apply(persona));

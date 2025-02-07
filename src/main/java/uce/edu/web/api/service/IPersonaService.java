@@ -17,8 +17,8 @@ public interface IPersonaService {
 
     public List<PersonaTo> buscarTodos();
 
-    public List<PersonaTo> buscarTodosPorNombre(String nombre);
+    public List<PersonaTo> buscarPorNombre(String nombre);
 
-    public List<PersonaTo> buscarTodosPorNombreyApellido(String nombre, String apellido);
+    public List<PersonaTo> buscarPorNombreyApellido(String nombre, String apellido);
 
 }

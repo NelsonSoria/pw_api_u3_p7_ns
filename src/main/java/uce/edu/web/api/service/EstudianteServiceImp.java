@@ -1,5 +1,6 @@
 package uce.edu.web.api.service;
 
+import java.util.List;
 import java.util.function.Function;
 
 import jakarta.enterprise.context.ApplicationScoped;
@@ -48,4 +49,26 @@ public class EstudianteServiceImp implements IEstudianteService {
        
     }
 
+    @Override
+    public List<EstudianteTo> buscarTodos() {
+        List<Estudiante> estudiantes = this.iEstudianteRepository.buscarTodos();
+        List<EstudianteTo> estudiantesTo = estudiantes.stream().map(this.mapTo).toList();
+        return estudiantesTo;
+    }
+
+    @Override
+    public List<EstudianteTo> buscarPorApellido(String apellido) {
+        List<Estudiante> estudiantes = this.iEstudianteRepository.buscarPorApellido(apellido);
+        List<EstudianteTo> estudiantesTo = estudiantes.stream().map(this.mapTo).toList();
+        return estudiantesTo;
+    }
+
+    @Override
+    public List<EstudianteTo> buscarPorApellidoyEdad(String apellido, Integer edad) {
+        List<Estudiante> estudiantes = this.iEstudianteRepository.buscarPorApellidoyEdad(apellido, edad);
+        List<EstudianteTo> estudiantesTo = estudiantes.stream().map(this.mapTo).toList();
+        return estudiantesTo;
+    }
+
+ 
 }
