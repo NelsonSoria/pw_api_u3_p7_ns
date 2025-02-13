@@ -31,13 +31,8 @@ public class PersonaServiceImpl implements IPersonaService {
 
     @Override
     public PersonaTo buscarPorId(Integer id) {
-        try {
-            this.iPersonaRepository.buscarPorId(id);
-        } catch (Exception e) {
-            PersonaTo p = new PersonaTo();
-            System.out.println("Error: " + e.getMessage());
-        }
-        return null;
+      this.iPersonaRepository.buscarPorId(id);
+      return this.mapTo.apply(this.iPersonaRepository.buscarPorId(id));
  
     }
 

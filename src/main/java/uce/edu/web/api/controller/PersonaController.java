@@ -2,6 +2,7 @@ package uce.edu.web.api.controller;
 
 import java.util.List;
 
+
 import jakarta.inject.Inject;
 import jakarta.ws.rs.DELETE;
 import jakarta.ws.rs.GET;
@@ -10,7 +11,10 @@ import jakarta.ws.rs.POST;
 import jakarta.ws.rs.PUT;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.PathParam;
+import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.QueryParam;
+import jakarta.ws.rs.core.MediaType;
+import jakarta.ws.rs.core.Response;
 import uce.edu.web.api.service.IPersonaService;
 import uce.edu.web.api.service.to.PersonaTo;
 
@@ -29,6 +33,7 @@ public class PersonaController {
 
     @PUT
     @Path("/{id}")
+
     public void actualizarPersona(PersonaTo personaTo, @PathParam("id") Integer id) {
         personaTo.setId(id);
         this.personaService.actualizar(personaTo);
@@ -44,10 +49,12 @@ public class PersonaController {
     // A lo que va ahcer un path variable ponemos la anotacion @PathParam
     @GET
     @Path("/{id}")
-    public PersonaTo buscarPorId(@PathParam("id") Integer id) {
-        PersonaTo p = this.personaService.buscarPorId(id);
+    @Produces(MediaType.APPLICATION_XML)
+    public Response buscarPorId(@PathParam("id") Integer id) {
+        return Response.status(240).header("Mensaje", "Persona Creada pero en proceso de validacion...")
+                .header("Valor1", 500).entity(this.personaService.buscarPorId(id)).build();
+        // PersonaTo p = this.personaService.buscarPorId(id);
         // return Response.ok(this.personaService.buscarPorId(id)).build();
-        return p;
     }
 
     @PATCH
