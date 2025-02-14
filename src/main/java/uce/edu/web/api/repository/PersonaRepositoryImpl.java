@@ -50,7 +50,6 @@ public class PersonaRepositoryImpl implements IPersonaRepository {
     public List<Persona> buscarPorNombre(String nombre) {
        return this.entityManager.createQuery("SELECT p FROM Persona p WHERE p.nombre = :nombre", Persona.class)
                 .setParameter("nombre", nombre).getResultList();
-       
     }
 
     @Override

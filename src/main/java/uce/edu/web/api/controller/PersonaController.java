@@ -4,6 +4,7 @@ import java.util.List;
 
 
 import jakarta.inject.Inject;
+import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.DELETE;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.PATCH;
@@ -26,6 +27,7 @@ public class PersonaController {
 
     @POST
     @Path("")
+    @Consumes(MediaType.APPLICATION_XML)
     public void guardarPersona(PersonaTo personaTo) {
         this.personaService.guardar(personaTo);
 
@@ -58,14 +60,16 @@ public class PersonaController {
     }
 
     @PATCH
-    @Path("/{id}/nuevo/{cedula}") // Request body, solo puede haber uno, si quiero tener varios debo tener un
+    @Path("/{id}") // Request body, solo puede haber uno, si quiero tener varios debo tener un
                                   // objeto wraper
     // el retorno de la capacidad se pone la respuesta del body del response
-    public void actualizarParcial(PersonaTo persona, @PathParam("id") Integer id, @PathParam("cedula") String cedula) {
-        System.out.println(cedula);
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_XML)
+    public PersonaTo actualizarParcial(PersonaTo persona, @PathParam("id") Integer id) {
         PersonaTo tmp = this.personaService.buscarPorId(id);
         tmp.setNombre(persona.getNombre());
         this.personaService.actualizar(tmp);
+        return tmp;
     }
 
     @GET
