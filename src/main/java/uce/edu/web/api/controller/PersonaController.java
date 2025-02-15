@@ -51,7 +51,7 @@ public class PersonaController {
     // A lo que va ahcer un path variable ponemos la anotacion @PathParam
     @GET
     @Path("/{id}")
-    @Produces(MediaType.APPLICATION_XML)
+    @Produces(MediaType.APPLICATION_JSON)
     public Response buscarPorId(@PathParam("id") Integer id) {
         return Response.status(240).header("Mensaje", "Persona Creada pero en proceso de validacion...")
                 .header("Valor1", 500).entity(this.personaService.buscarPorId(id)).build();
@@ -64,7 +64,7 @@ public class PersonaController {
                                   // objeto wraper
     // el retorno de la capacidad se pone la respuesta del body del response
     @Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.APPLICATION_XML)
+    @Produces(MediaType.APPLICATION_JSON)
     public PersonaTo actualizarParcial(PersonaTo persona, @PathParam("id") Integer id) {
         PersonaTo tmp = this.personaService.buscarPorId(id);
         tmp.setNombre(persona.getNombre());
